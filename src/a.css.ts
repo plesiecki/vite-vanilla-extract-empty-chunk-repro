@@ -1,5 +1,14 @@
-import { style } from './utils.css';
+import { style, createGlobalThemeContract, assignVars } from '@vanilla-extract/css';
+import { contract } from './contract.css';
+
+export const componentContract = createGlobalThemeContract({
+    color: {
+        primary: 'component-token',
+    }
+});
 
 export const a = style({
-    color: 'red'
+    vars: assignVars(componentContract.color, {
+        primary: contract.color.primary,
+    })
 });
